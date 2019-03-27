@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
@@ -120,21 +121,16 @@ public class BoardGame {
 	}
 	
 	public Set<Location> getPlayerLocations() {
-		ArrayList<Location> result = new ArrayList<Location>();
-		Set<Location> returned = null;
-		for (Location x: playerLocations.values()) {
-			result.add(x);
-		}
-		for (int i = 0; i < result.size(); ++i) {
-			returned.add(result.get(i));
-		}
-		
-		return returned;
+
+		//Set<String> targetSet = new HashSet<>(sourceMap.values());
+		Set<Location> result = new HashSet<>(playerLocations.values());
+		return result;
 		
 	}
 	
 	public Set<GamePiece> getPlayerPieces() {
-		return (Set<GamePiece>) playerPieces.values();
+		Set<GamePiece> result = new HashSet<>(playerPieces.values());
+		return result;
 	}
 
 }

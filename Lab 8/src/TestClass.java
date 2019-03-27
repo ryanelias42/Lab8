@@ -61,6 +61,8 @@ public class TestClass {
 		
 		Assert.assertEquals("getPiecesAtLocation incorrect", GamePiece.RED_RACER, testGame.getPiecesAtLocation(Location.BALLROOM)[0]);
 		
+		Assert.assertEquals("getPlayerLocations incorrect", 4, testGame.getPlayerLocations().size());
+		
 		
 	}
 	
