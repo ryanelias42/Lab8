@@ -1,7 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TestClass {
+public class BoardGameTest {
 	
 
 	
@@ -30,6 +30,7 @@ public class TestClass {
 		Assert.assertEquals("Incorrect rgb value in color" + col.name(), 0 , col .getB());
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Test
 	public void BoardGameTest() {
 		testGame.addPlayer("player1", GamePiece.RED_RACER, Location.HALL);
@@ -50,16 +51,16 @@ public class TestClass {
 		Assert.assertEquals("getPlayerWithGamePiece incorrect", "player1", testGame.getPlayerWithGamePiece(GamePiece.RED_RACER));
 		Assert.assertEquals("getPlayerWithGamePiece incorrect", null, testGame.getPlayerWithGamePiece(GamePiece.MAGENTA_RACER));
 		testGame.movePlayer("player1", Location.BALLROOM);
-		Assert.assertEquals("movePlayer is incorrect", Location.BALLROOM, testGame.getPlayerLocation("player1"));
+		Assert.assertEquals("movePlayer is incorrect", Location.BALLROOM, testGame.getPlayersLocation("player1"));
 		
 		testGame.addPlayer("player4", GamePiece.YELLOW_BOOT, Location.HALL);
-		Assert.assertEquals("getPlayersAtLocation incorrect", "player4",testGame.getPlayersAtLocation(Location.HALL)[0]);
+		Assert.assertEquals("getPlayersAtLocation incorrect", "player4",testGame.getPlayersAtLocation(Location.HALL).get(0));
 		
 		Assert.assertEquals("getPlayers incorrect", 4, testGame.getPlayers().size());
 		
 		Assert.assertEquals("getPlayerPieces incorrect", true, testGame.getPlayerPieces().contains(GamePiece.RED_RACER));
 		
-		Assert.assertEquals("getPiecesAtLocation incorrect", GamePiece.RED_RACER, testGame.getPiecesAtLocation(Location.BALLROOM)[0]);
+		Assert.assertEquals("getPiecesAtLocation incorrect", GamePiece.RED_RACER, testGame.getGamePiecesAtLocation(Location.BALLROOM).get(0));
 		
 		Assert.assertEquals("getPlayerLocations incorrect", 4, testGame.getPlayerLocations().size());
 		

@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Set;
@@ -15,7 +14,7 @@ public class BoardGame {
 		playerLocations = new LinkedHashMap<String , Location>();
 	}
 	
-	public boolean addPlayer(String playerName, GamePiece gamePiece, Location initialLocation) {
+	public boolean addPlayer(String playerName, GamePiece gamePiece, Location intialLocation) {
 		
 		//run for each and see if the gamePiece is already taken
 		for (GamePiece val:playerPieces.values()) {
@@ -28,7 +27,7 @@ public class BoardGame {
 		
 		
 		playerPieces.put(playerName,gamePiece);
-		playerLocations.put(playerName,initialLocation);
+		playerLocations.put(playerName,intialLocation);
 		return true;
 	}
 	
@@ -80,11 +79,11 @@ public class BoardGame {
 		
 	}
 	
-	public Location getPlayerLocation(String playerName) {
+	public Location getPlayersLocation(String playerName) {
 		return playerLocations.get(playerName);
 	}
 	
-	public String[] getPlayersAtLocation(Location loc) {
+	public ArrayList<String> getPlayersAtLocation(Location loc) {
 		ArrayList<String> locations = new ArrayList<String>();
 		
 		for (String name: playerLocations.keySet()) {
@@ -92,27 +91,19 @@ public class BoardGame {
 				locations.add(name);
 			}
 		}
-		String[] result = new String[locations.size()];
-		for (int i = 0; i < result.length; ++i) {
-			result[i] = locations.get(i);
-		}
-		return result;
+		return locations;
 	}
 	
-	public GamePiece[] getPiecesAtLocation(Location loc) {
+	public ArrayList<GamePiece> getGamePiecesAtLocation(Location loc) {
 		
-		ArrayList<String> namesAtLocation = new ArrayList<String>();
+		ArrayList<GamePiece> piecesAtLoc = new ArrayList<GamePiece>();
 		
 		for (String name: playerLocations.keySet()) {
 			if (playerLocations.get(name).equals(loc)) {
-				namesAtLocation.add(name);
+				piecesAtLoc.add(playerPieces.get(name));
 			}
 		}
-		GamePiece[] result = new GamePiece[namesAtLocation.size()];
-		for (int i = 0; i < result.length; ++i) {
-			result[i] = playerPieces.get(namesAtLocation.get(i));
-		}
-		return result;	
+		return piecesAtLoc;
 	}
 	
 	
