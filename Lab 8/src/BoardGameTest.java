@@ -11,12 +11,12 @@ public class BoardGameTest {
 	@Test
 	public void ShapeLocationGamePieceTests() {
 		//testGame.addPlayer("player1", GamePiece.BLUE_RACER, Location.HALL);
-		Assert.assertEquals("getShape and Shape.toString incorrect", "RACECAR", GamePiece.RED_RACER.getShape().toString());
+		Assert.assertEquals("getShape and Shape.toString incorrect", "racecar", GamePiece.RED_RACER.getShape().toString());
 		Assert.assertEquals("Location getName incorrect", "HALL",Location.HALL.name());
-		Assert.assertEquals("GamePiece toString Incorrect","BLUE_RACER: a BLUE RACECAR with priority 2", GamePiece.BLUE_RACER.toString());
+		Assert.assertEquals("GamePiece toString Incorrect","BLUE_RACER: a BLUE racecar with priority 2", GamePiece.BLUE_RACER.toString());
 		Assert.assertEquals("GamePiece getColor incorrect", "MAGENTA",GamePiece.MAGENTA_RACER.getColor().toString());
-		Assert.assertEquals("movesFirst method incorrect", "BLUE_RACER: a BLUE RACECAR with priority 2", GamePiece.movesFirst(GamePiece.BLUE_RACER,GamePiece.RED_THIMBLE).toString());
-		Assert.assertEquals("movesFirst method incorrect", "BLUE_RACER: a BLUE RACECAR with priority 2", GamePiece.movesFirst(GamePiece.RED_THIMBLE,GamePiece.BLUE_RACER).toString());
+		Assert.assertEquals("movesFirst method incorrect", "BLUE_RACER: a BLUE racecar with priority 2", GamePiece.movesFirst(GamePiece.BLUE_RACER,GamePiece.RED_THIMBLE).toString());
+		Assert.assertEquals("movesFirst method incorrect", "BLUE_RACER: a BLUE racecar with priority 2", GamePiece.movesFirst(GamePiece.RED_THIMBLE,GamePiece.BLUE_RACER).toString());
 		
 	
 	
@@ -32,7 +32,7 @@ public class BoardGameTest {
 	
 	@SuppressWarnings("deprecation")
 	@Test
-	public void BoardGameTest() {
+	public void BoardGameTestM() {
 		testGame.addPlayer("player1", GamePiece.RED_RACER, Location.HALL);
 		testGame.addPlayer("player2", GamePiece.RED_THIMBLE, Location.KITCHEN);
 		testGame.addPlayer("player3", GamePiece.GREEN_BOOT, Location.BILLIARD_ROOM);
@@ -65,6 +65,13 @@ public class BoardGameTest {
 		Assert.assertEquals("getPlayerLocations incorrect", 4, testGame.getPlayerLocations().size());
 		
 		
+	}
+	
+	@Test
+	public void LocationEnumTest() {
+		Assert.assertEquals("Location enum values incorrect", Location.KITCHEN, Location.valueOf("KITCHEN"));
+		Assert.assertEquals("Location enum values incorrect", Location.HALL, Location.valueOf("HALL"));
+		Assert.assertEquals("Location enum values incorrect", Location.STUDY, Location.valueOf("STUDY"));
 	}
 	
 

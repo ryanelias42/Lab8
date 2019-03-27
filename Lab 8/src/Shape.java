@@ -8,6 +8,6 @@ public enum Shape {
 	
 	
 	public String toString() {
-		return this.name();
+		return this.name().toLowerCase();
 	}
 }
