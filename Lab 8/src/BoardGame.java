@@ -120,7 +120,17 @@ public class BoardGame {
 	}
 	
 	public Set<Location> getPlayerLocations() {
-		return (Set<Location>) playerLocations.values();
+		ArrayList<Location> result = new ArrayList<Location>();
+		Set<Location> returned = null;
+		for (Location x: playerLocations.values()) {
+			result.add(x);
+		}
+		for (int i = 0; i < result.size(); ++i) {
+			returned.add(result.get(i));
+		}
+		
+		return returned;
+		
 	}
 	
 	public Set<GamePiece> getPlayerPieces() {
